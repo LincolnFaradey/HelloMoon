@@ -8,8 +8,10 @@ import android.media.MediaPlayer;
  */
 public class AudioPlayer {
     private MediaPlayer mPlayer;
+    private boolean playing;
 
     public void stop() {
+        playing = false;
         if (mPlayer != null) {
             mPlayer.release();
             mPlayer = null;
@@ -19,7 +21,7 @@ public class AudioPlayer {
     public void play(Context c){
         stop();
         mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
-
+        playing = true;
         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -31,11 +33,12 @@ public class AudioPlayer {
     }
 
     public void pause(){
+        playing = false;
         mPlayer.pause();
     }
 
 
     public boolean isPlaying(){
-        return mPlayer.isPlaying();
+        return playing;
     }
 }
