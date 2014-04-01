@@ -15,6 +15,7 @@ public class HelloMoonFragment extends Fragment {
     private Button mPlayButton;
     private Button mStopButton;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_hello_moon, container, false);
@@ -23,7 +24,14 @@ public class HelloMoonFragment extends Fragment {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPlayer.play(getActivity());
+                if (mPlayer.isPlaying()) {
+                   mPlayer.pause();
+                }else {
+                    mPlayer.play(getActivity());
+                    mPlayButton.setText("Pause");
+                }
+
+
             }
         });
 
