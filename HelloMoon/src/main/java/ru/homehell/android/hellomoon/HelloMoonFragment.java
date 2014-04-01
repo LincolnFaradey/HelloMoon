@@ -27,6 +27,12 @@ public class HelloMoonFragment extends Fragment {
                 if (mPlayer.isPlaying()) {
                    mPlayer.pause();
                 }else {
+                    mPlayer.resume();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     mPlayer.play(getActivity());
                     mPlayButton.setText("Pause");
                 }

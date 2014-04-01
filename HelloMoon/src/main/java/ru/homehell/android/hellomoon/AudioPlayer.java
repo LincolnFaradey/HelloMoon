@@ -37,6 +37,11 @@ public class AudioPlayer {
         mPlayer.pause();
     }
 
+    public void resume(){
+        playing = true;
+        mPlayer.pause();
+    }
+
 
     public boolean isPlaying(){
         return playing;
