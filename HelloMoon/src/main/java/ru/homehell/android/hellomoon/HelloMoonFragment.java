@@ -18,23 +18,17 @@ public class HelloMoonFragment extends Fragment {
     private Button mPauseButton;
     private Button mStopButton;
 
-    private VideoView mVideoView;
-    Uri resourcesUri = Uri.parse("android.resources://" +
-            "ru.homehell.android.hellomoon/raw/apollo_17_stroll");
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_hello_moon, container, false);
 
-        mVideoView = (VideoView) v.findViewById(R.id.videoView);
-        mVideoView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mVideoView.setVideoURI(resourcesUri);
-                mVideoView.start();
-            }
-        });
+
 
         mPlayButton = (Button)v.findViewById(R.id.hellomoon_playButton);
         mPlayButton.setOnClickListener(new View.OnClickListener() {

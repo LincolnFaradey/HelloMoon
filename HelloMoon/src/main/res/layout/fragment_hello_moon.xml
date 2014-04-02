@@ -12,12 +12,6 @@
         android:scaleType="center"
         android:layout_weight="1"/>
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerInside"
-        android:layout_weight="1"/>
 
     <TableRow
         android:gravity="center|bottom"
