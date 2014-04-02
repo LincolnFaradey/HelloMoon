@@ -3,47 +3,37 @@ package ru.homehell.android.hellomoon;
 import android.content.Context;
 import android.media.MediaPlayer;
 
+import java.io.IOException;
+
 /**
  * Created by faradey on 31.03.14.
  */
 public class AudioPlayer {
     private MediaPlayer mPlayer;
-    private boolean playing;
+    private int pos;
 
     public void stop() {
-        playing = false;
+
         if (mPlayer != null) {
             mPlayer.release();
+            pos = 0;
             mPlayer = null;
         }
     }
 
-    public void play(Context c){
+    public void play(Context c) {
         stop();
         mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
-        playing = true;
+
         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 stop();
             }
         });
-
         mPlayer.start();
     }
 
-    public void pause(){
-        playing = false;
-        mPlayer.pause();
-    }
-
-    public void resume(){
-        playing = true;
-        mPlayer.pause();
-    }
 
 
-    public boolean isPlaying(){
-        return playing;
-    }
 }

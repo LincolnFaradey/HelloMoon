@@ -2,6 +2,7 @@ package ru.homehell.android.hellomoon;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,20 +25,7 @@ public class HelloMoonFragment extends Fragment {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mPlayer.isPlaying()) {
-                   mPlayer.pause();
-                }else {
-                    mPlayer.resume();
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    mPlayer.play(getActivity());
-                    mPlayButton.setText("Pause");
-                }
-
-
+                mPlayer.play(getActivity());
             }
         });
 
